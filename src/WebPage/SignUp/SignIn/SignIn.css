@@ -1,0 +1,122 @@
+.signIn-Container
+{
+    /* border: 1px solid blue; */
+    display: flex;
+    width: 100vw;
+   height:100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.main-container
+{
+    border: 1px solid black;
+    width: 30vw;
+    height: 75vh;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+}
+.form-container
+{
+     /* border: 1px solid blue;  */
+    width: 60%;
+    height: 70vh;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+}
+
+.header
+{
+    display: flex;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    justify-content: center;
+}
+.f{ color: blue;}
+.u{color: red;}
+.n{color: yellow;}
+.d{color:blue;}
+.o{color:darkgreen}
+.oo{color:red;}
+ 
+.input-s{
+    height: 40px;
+    border-radius: 4px;
+    width: 300px;
+}
+.heading-s
+{
+    text-align: center;
+}
+.name-s
+{
+    display: flex;
+    justify-content:space-around;
+    
+}
+div{
+    height: 70px;
+}
+.para-s{
+    text-align: start;
+    color: rgb(55, 55, 223);
+}
+.Login-s{
+    font-size: 30px;
+    
+}
+.submit-s
+{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    height: 40px;
+    width: 80px;
+    background-color: rgb(55, 55, 223);
+    color: white;
+}
+.link-s{
+    color: rgb(55, 55, 223) ;
+}
+@media  screen and (max-width:650px){
+    .form-container
+    {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center
+       
+        /* background-color: aqua; */
+    }
+    .main-container
+    {
+        height: 100%;
+        width: 100%;
+        /* background-color: blue; */
+      
+    }
+
+}
+@media screen and (min-width:500px) and (max-width:1300px)
+{
+    .form-container
+    {
+        height: 100%;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        /* background-color: aqua; */
+    }
+    .main-container
+    {
+        height: 100%;
+        width: 100%;
+        /* background-color: blue; */
+      
+    }
+
+}
