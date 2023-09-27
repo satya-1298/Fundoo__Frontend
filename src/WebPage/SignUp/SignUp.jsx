@@ -1,11 +1,47 @@
 
 
-import React from "react";
+import React,{useState} from "react";
 import './SignUp.css';
 import Logo from "../../Assets/Logo.jpg"
 // import SignIn from "./SignIn/SignIn";   
+import {TextField,Button} from '@mui/material';
+
 
 export default function SignUp(){
+    const[data,setData]=useState({firstName:'',lastName:'',email:'',password:''});
+    const handleFirstName=(firstName)=>{
+        setData(prevState => (
+            {
+                ...prevState,
+                FirstName:firstName.target.value
+            }
+        ))
+    }
+    const handleLastName=(lastName)=>{
+        setData(prevState =>(
+            {
+                ...prevState,
+                lastName:lastName.target.value
+            }
+        ))
+    }
+    const handleEmail=(email)=>{
+        setData(prevState=>(
+            {
+                ...prevState,
+                email:email.target.value
+            }
+        ))
+    }
+    const handlePassword=(password)=>{
+        setData(prevState=>(
+            {
+                ...prevState,
+                password:password.target.value
+            }
+        ))
+    }
+    console.log(data);
     return(
         <div className="signUp-Container">
             <div className="main-container">
@@ -25,20 +61,22 @@ export default function SignUp(){
                         <p className="heading-s" >Create your Fundoo Account </p>    
                         </div>
                         <div className="name-s">
-                            
-                            <input type="text" id="FirstName" placeholder="FirstName"  className="input-s"/>
-                            <input type="text" id="LastName" placeholder="LastName" className="input-s"/>
+                            <TextField id="FirstName" label="FirstName" onChange={handleFirstName} variant="outlined" className="input-s"/>
+                         
+                            <TextField id="LastName" label="LastName" onChange={handleLastName} variant="outlined" className="input-s"/>
                         </div>
                         
                             <div className="Username-S">
-                                <input type="text" id="Email" placeholder="Username" className="input-ss" />
+                            <TextField  id="Email" label="UserName" onChange={handleEmail} variant="outlined" className="input-ss"/>
+                              
                             </div>
                             
                            <label className="label-s">you can use letters,numbers & periods</label>
                            <p className="para-s">Use my current email instead</p>                            
                         <div className="pass-style" >
-                           <input type="password" id="Password" placeholder="Password" className="input-s"/>
-                            <input type="password" id="Password" placeholder="confirm" className="input-s"/>
+                            <TextField  id="Password" label="Password" onChange={handlePassword} variant="outlined" className="input-s"/>
+                            <TextField id="PasswordConfirm" label="Confirm" onChange={handlePassword} variant="outlined" className="input-s"/>
+                         
                          </div>
                          <p className="para-s">Use 8 or more characters with a mix of letters,numbers & symbol</p>
                          <div className="para-s">
@@ -48,12 +86,12 @@ export default function SignUp(){
                         </div>
                         <div className="submit">
                             <a href=''>sign in insted</a>
-                            <button type="button" className="button-s">Next</button>
+                            <Button variant="contained" className="button-s">Next</Button>
                         </div>
                     </form>
                 </div>
                 <div className="image-s" >
-                    <img src={Logo} width={470} height={400}/>
+                    <img src={Logo} />
                 </div>
             </div>
         </div>
