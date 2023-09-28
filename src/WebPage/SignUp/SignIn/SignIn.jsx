@@ -1,8 +1,64 @@
 
-import React from "react";
+import React,{useState} from "react";
 import './SignIn.css';
+import {TextField,Button} from '@mui/material';
+const RegEmail=new RegExp('[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
+const RegPassword=new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$');
+
+
 
 export default function SignIn(){
+    const[val,setVal]=useState({email:'',password:''});
+    const[regdata,setRegdata]=useState({emailBoarder:false,emailhelper:'',passwordBoarder:false,passwordhelper:''});
+    const handleUserName=(e)=>
+    {
+        setVal(preState=>(
+            {
+                ...preState,
+                email:e.target.value
+            }
+        ))
+    }
+    const handlePassword=(p)=>
+    {
+        setVal(preState=>(
+            {
+                ...preState,
+                password:p.target.value
+            }
+        ))
+    }
+    console.log(val)
+
+    const Validation=()=>
+    {
+        let validUserName=RegEmail.test(val.email)
+        if(validUserName===false)
+        {
+            setRegdata(preState=>(
+                {
+                    ...preState,
+                    emailBoarder:true,
+                    emailhelper:'Invalid UserName'
+                }
+            ))
+        }
+        let validpassword=RegPassword.test(val.password)
+        if(validpassword===false)
+        {
+            setRegdata(preState=>(
+                {
+                    ...preState,
+                    passwordBoarder:true,
+                    passwordhelper:'Invalid Password'
+                }
+            ))
+        }
+        if(validUserName==true && validpassword==true)
+        {
+            console.log(regdata)
+        }
+    }
     return(
         <div className="signIn-Container">
             <div className="main-container">
@@ -23,17 +79,19 @@ export default function SignIn(){
                         <p className="heading-s" >Use your Fundoo Account </p>    
                         </div>
                          <div className="detail.cs">
-                             <input type="email/phonenumber" id="email" placeholder="Email or phone"  className="input-s"/>
+                         <TextField id="email" label="Email or Phone" onChange={handleUserName} error={regdata.emailBoarder} helperText={regdata.emailhelper} size="small"  variant="outlined" className="input-s"/>
+                             {/* <input type="email/phonenumber" id="email" placeholder="Email or phone"  className="input-s"/> */}
                         </div>
                         <div className="detail.cs">
-                            <input type="password" id="password" placeholder="Password" className="input-s"/>
+                        <TextField type="password" id="Password" label="Password"onChange={handlePassword} error={regdata.passwordBoarder} helperText={regdata.passwordhelper} variant="outlined" size="small"  className="input-s"/>
+                            {/* <input type="password" id="password" placeholder="Password" className="input-s"/> */}
                         </div>
                         <div>
                         <p className="para-s">forgot Password?</p>
                         </div>
                         <div className="submit-s">
                             <a href="" className="link-s">Create account</a>
-                            <button>Login</button>
+                            <Button onClick={Validation} variant="contained">Login</Button>
                         </div>
                     </form>
                 </div>
