@@ -2,6 +2,8 @@
 import React,{useState} from "react";
 import './SignIn.css';
 import {TextField,Button} from '@mui/material';
+import {Link} from "react-router-dom"
+import { signin } from "../../../Services/UserServices";
 const RegEmail=new RegExp('[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
 const RegPassword=new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$');
 
@@ -56,6 +58,13 @@ export default function SignIn(){
         }
         if(validUserName==true && validpassword==true)
         {
+            signin(val).then((response)=>
+            {
+                console.log(response)
+                localStorage.setItem("Token",response.data.token)
+
+            })
+
             console.log(regdata)
         }
     }
@@ -90,7 +99,9 @@ export default function SignIn(){
                         <p className="para-s">forgot Password?</p>
                         </div>
                         <div className="submit-s">
+                            <Link to="/signUp">
                             <a href="" className="link-s">Create account</a>
+                            </Link>
                             <Button onClick={Validation} variant="contained">Login</Button>
                         </div>
                     </form>

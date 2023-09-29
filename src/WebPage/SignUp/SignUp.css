@@ -1,6 +1,6 @@
-.signUp-Container
+.signUp-Containerr
 {
-    border: 1px solid rgb(0, 255, 30);
+    /* border: 1px solid rgb(0, 255, 30); */
     display: flex;
     width: 100vw;
    height:100vh;
@@ -8,22 +8,22 @@
    justify-content: center;
    align-items: center;
 }
-.main-container
+.main-containerr
 {
     border: 1px solid black;
-    width: 60vw;
+    width: 50vw;
     height: 90vh;
     display: flex;
     border-radius: 5px;
 }
-.form-container
+.form-containerr
 {
     /* border: 1px solid blue; */
     width: 90%;
     height: 100%;
     padding: 10px;
 }
-.image-s
+.image-ss
 {
     /* border: 1px solid red; */
     width: 40%;
@@ -32,7 +32,7 @@
     justify-content: center;
     flex-direction: column;
 }
-.header
+.headerr
 {
     display: flex;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -45,48 +45,48 @@
 .o{color:darkgreen}
 .oo{color: red;}
  
-.input-s{
+.input-ss{
     height: 30px;
     border-radius: 4px;
     width: 200px;
     
 }
-.name-s
+.name-ss
 {
     display: flex;
     justify-content: space-between;
 }
-.input-ss{
+.input-sss{
     height: 30px;
     width: 99%;
     border-radius: 4px;
 }
 div{
-    height: 60px;
+    height: 50px;
     /* display: flex;
     justify-content: space-between; */
 }
-.para-s{
+.para-ss{
     text-align: start;
 }
-.pass-style{
+.pass-stylee{
    display: flex;
    justify-content: space-between;
 }
-.submit{
+.submitt{
     display: flex;
     justify-content: space-between;
 }
-.button-s{
+.button-ss{
     height: 40px;
     width: 100px;
     background-color: rgb(85, 134, 226);
 }
-.heading-s{
+.heading-ss{
     text-align: start;
     font: 1.2em sans-serif;
 }
-.label-s
+.label-ss
 {
     display: flex;
     justify-self: start;
@@ -94,14 +94,14 @@ div{
 
   @media screen and (max-width:700px)
 {
-  .signUp-Container,.form-container,.main-container{
+  .signUp-Containerr,.form-containerr,.main-containerr{
     width: 100%;
     margin-top: 0px;
   } 
-  .input-s{
+  .input-ss{
     width: 230px;
   }
-  .image-s{
+  .image-ss{
     height: 0px;
     width: 0px;
 }
@@ -109,11 +109,11 @@ div{
 }  
 @media screen and (min-width:700px) and (max-width:1300px)
 {
-    .signUp-Container,.form-container,.main-container{
+    .signUp-Containerr,.form-containerr,.main-containerr{
         width: 100%;
         margin-top: 0px;
       } 
-      .input-s{
+      .input-ss{
         width: 225px;
       }
      

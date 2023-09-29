@@ -11,7 +11,7 @@
 .main-container
 {
     border: 1px solid black;
-    width: 30vw;
+    width: 25vw;
     height: 80vh;
     display: flex;
     border-radius: 5px;
