@@ -2,16 +2,17 @@
 import React,{useState} from "react";
 import './SignIn.css';
 import {TextField,Button} from '@mui/material';
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { signin } from "../../../Services/UserServices";
 const RegEmail=new RegExp('[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
 const RegPassword=new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{8,}$');
 
-
-
 export default function SignIn(){
     const[val,setVal]=useState({email:'',password:''});
     const[regdata,setRegdata]=useState({emailBoarder:false,emailhelper:'',passwordBoarder:false,passwordhelper:''});
+
+    const navigate = useNavigate()
+
     const handleUserName=(e)=>
     {
         setVal(preState=>(
@@ -62,7 +63,7 @@ export default function SignIn(){
             {
                 console.log(response)
                 localStorage.setItem("Token",response.data.token)
-
+                navigate("/dashboard")
             })
 
             console.log(regdata)
@@ -102,9 +103,10 @@ export default function SignIn(){
                             <Link to="/signUp">
                             <a href="" className="link-s">Create account</a>
                             </Link>
-                            <a href="/dashboard">
+                           
                             <Button onClick={Validation} variant="contained">Login</Button>
-                            </a>
+                            {/* <a href="/dashboard">
+                            </a> */}
                              {/* <Button onClick={Validation} variant="contained">Login</Button> */}
                         </div>
                     </form>

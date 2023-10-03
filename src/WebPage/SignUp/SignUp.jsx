@@ -3,7 +3,7 @@
 import React,{useState} from "react";
 import './SignUp.css';
 import Logo from "../../Assets/Logo.jpg"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { signup } from "../../Services/UserServices";
 // import SignIn from "./SignIn/SignIn";   
 import {TextField,Button} from '@mui/material';
@@ -20,7 +20,10 @@ export default function SignUp(){
     const[regobj,setRegobj]=useState({firstNameBoarder:false,firstNameHelper:'',
                                 lastNameBoarder:false,lastNameHelper:'',
                                 emailBoarder:false, emailHelper:'', passwordBoarder:false,password_Helper:'' });
-    const FirstName=(e)=>{
+  
+const navigate = useNavigate()
+
+                const FirstName=(e)=>{
         setData(prevState => (
             {
                 ...prevState,
@@ -107,6 +110,7 @@ export default function SignUp(){
         {
             signup(data).then((response) => {
                 console.log(response)
+                navigate("/")
             }).catch((error) => {
                 console.log(error)
             })

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, useTheme ,alpha} from '@mui/material/styles';
+import { styled, useTheme, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import SettingsOutlinedIcon from '@mui/icons-material/Settings';
 import { useNavigate } from 'react-router-dom';
@@ -110,9 +110,7 @@ export default function MiniDrawer() {
     setOpen(!open);
   };
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-
+  const[anchorEl, setAnchorEl] = React.useState(null);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -131,7 +129,10 @@ export default function MiniDrawer() {
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
+    paddingLeft: '12px',
     width: '100%',
+    height: '70%',
+    marginTop: '10px',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(2),
       width: 'auto',
@@ -146,6 +147,7 @@ export default function MiniDrawer() {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    // marginTop: '10px '
   }));
 
 
@@ -159,17 +161,18 @@ export default function MiniDrawer() {
 
       width: '100%',
       [theme.breakpoints.up('md')]: {
-        width: '70ch',
-        
+        width: '90ch',
+        height: '25px',
+
       }
     },
   }));
 
   const navigate = useNavigate();
 
-  const signouut = () => {
+  const signout = () => {
     if (localStorage.key) {
-      localStorage.removeItem('token');
+      localStorage.removeItem('Token');
       navigate("/")
     }
   }
@@ -182,46 +185,52 @@ export default function MiniDrawer() {
       <AppBar position="fixed" sx={{ backgroundColor: 'white' }} >
         <Toolbar>
           <IconButton
-            color=""
+            color="black"
             aria-label="open drawer"
             onClick={handleDrawer}
             edge="start"
             sx={{
-              marginRight: 5
+              marginRight: 8
             }}
           >
             <MenuIcon />
           </IconButton>
-          <img src={keeps} alt='Keep' width={'40px'} height={'40px'} ></img>
-          <Typography variant="h6" noWrap component="div" color={'darkgrey'} position={'relative'} top={'2.5vh'} paddingRight={'10vh'} >
-            Fundoo
+          <img src={keeps} alt='Keep' width={'40px'} height={'40px'} marginRight={4}></img>
+          <Typography variant="h6" noWrap component="div" color={'grey'} position={'relative'} top={'3vh'}  >
+           <b>Fundoo</b> 
           </Typography>
-          <div style={{ marginLeft: 15 }}>
+          <div style={{ marginLeft: 30 }}>
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-              />
+               placeholder='Search...'
+            inputProps={{ 'aria-label': 'search' }}
+            sx={{
+              justifyItems: 'center',
+              paddingBottom:'20px',
+              alignContent: 'center',
+              color: 'black',
+            }} />
             </Search>
           </div>
           <RefreshIcon
-            sx={{marginLeft: 30,color: 'grey'
+            sx={{
+              marginLeft: 20, color: 'grey'
             }} />
           <ViewStreamOutlinedIcon
             sx={{
-              marginLeft: 4, color: 'grey'
+              marginLeft: 3, color: 'grey'
             }} />
           <SettingsOutlinedIcon
             sx={{
-              marginLeft: 4,color: 'grey'
+              marginLeft: 3, color: 'grey'
             }} />
 
           <AppsIcon
             sx={{
-              marginLeft: 8,
+              marginLeft: 6,
               color: 'grey'
             }} />
 
@@ -231,13 +240,15 @@ export default function MiniDrawer() {
             aria-controls="menu-appbar"
             aria-haspopup="true"
             onClick={handleMenu}
-            
+            color='black'
           >
             <AccountCircle sx={{
-              marginLeft: 6,
-              color: 'grey'
+              marginLeft: 1,
+              // color: 'black',
+              width: '200px'
             }} />
           </IconButton>
+          <div>
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
@@ -252,14 +263,17 @@ export default function MiniDrawer() {
             }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
+            width={'20px'}
+            height={'100px'}
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={signouut}>Logout</MenuItem>
+            <MenuItem onClick={signout}>Logout</MenuItem>
           </Menu>
+          </div>
 
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open} >
         <DrawerHeader>
           <IconButton onClick={handleDrawer}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -268,10 +282,13 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {['Notes', 'Remainders', 'Edit', 'Label', 'Trash'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+            <ListItem key={text} disablePadding sx={{ display: 'block', paddingTop:'20px' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
+                  display:'flex',
+                  marginTop:'2px',
+                  flexDirection: 'row',
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
@@ -281,6 +298,7 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
+                   
                   }}
                 >
                   {/* {index % 2 === 0 ? <LightbulbOutlinedIcon/>:<ArchiveIcon/> } */}
@@ -297,8 +315,7 @@ export default function MiniDrawer() {
           ))}
         </List>
 
-        <Divider />
-      
+
       </Drawer>
 
     </Box>

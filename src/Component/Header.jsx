@@ -95,15 +95,20 @@ export default function Header() {
       anchorOrigin={{
         vertical: 'top',
         horizontal: 'right',
+        
       }}
       id={menuId}
       keepMounted
       transformOrigin={{
         vertical: 'top',
         horizontal: 'right',
+        paddingRight: '0px',
+        //  width:'calc(100% + 0px)'
+        width:'calc(100%+0px)'
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
+      
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
