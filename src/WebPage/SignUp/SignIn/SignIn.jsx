@@ -96,13 +96,16 @@ export default function SignIn(){
                             {/* <input type="password" id="password" placeholder="Password" className="input-s"/> */}
                         </div>
                         <div>
-                        <p className="para-s">forgot Password?</p>
+                        <a href=" " className="para-s">forgot Password?</a>
                         </div>
                         <div className="submit-s">
                             <Link to="/signUp">
                             <a href="" className="link-s">Create account</a>
                             </Link>
+                            <a href="/dashboard">
                             <Button onClick={Validation} variant="contained">Login</Button>
+                            </a>
+                             {/* <Button onClick={Validation} variant="contained">Login</Button> */}
                         </div>
                     </form>
                 </div>

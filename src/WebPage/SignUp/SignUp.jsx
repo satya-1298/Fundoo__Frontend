@@ -160,7 +160,10 @@ export default function SignUp(){
                             <Link to ="/login">
                             <a href=''>sign in insted</a>
                             </Link>
-                            <Button onClick={verifyValidation} variant="contained" className="button-ss">Next</Button>
+                            {/* <a href="/login">
+                             <Button onClick={verifyValidation} variant="contained" className="button-ss" >Next</Button>
+                             </a> */}
+                              <Button onClick={verifyValidation} variant="contained" className="button-ss" >Next</Button>
                         </div>
                     </div>
                 </form>
