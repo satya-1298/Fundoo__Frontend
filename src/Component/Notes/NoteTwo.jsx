@@ -10,27 +10,34 @@ import { ArchiveOutlined, ColorLensOutlined, ImageOutlined, MoreVertOutlined, No
 
 export default function NoteTwo(props) {
     const [data, setData] = useState({
-        title: '',
-        description: '',
-        bgColor: '',
-        isArchive: false,
-        isTash: false,
+        Title: '',
+        Description: '',
+        BackGround: '',
+        IsArchive: false,
+        IsTrash: false,
     });
 
     const getTitle = (e) => {
         setData(prevState => ({
             ...prevState,
-            title: e.target.value
+            Title: e.target.value
         }))
     }
 
     const getDescription = (e) => {
         setData(prevState => ({
             ...prevState,
-            description: e.target.value
+            Description: e.target.value
         }))
     }
-   
+    const submitData=()=>{
+        CreateNote(data).then((response)=>{
+            console.log(response)
+            
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
 
     return (
         
@@ -40,8 +47,9 @@ export default function NoteTwo(props) {
                     alignItems: 'center',
                     justifyContent: 'center',
                     paddingTop: '10px',
-                    height:'250px',
-                    width:'100%'
+                    height:'120px',
+                    width:'100%',
+                    marginTop: '50px',
 
                 }}
 
@@ -136,7 +144,15 @@ export default function NoteTwo(props) {
 
                         <Button
                             type="submit"
-                            onClick={( ) => { props.handleToggle()}}
+                            onClick={()=>{
+                                if(data.Title !== "")
+                                {
+                                    console.log("Hello")
+                                    submitData();
+                                }
+                                props.handleToggle();
+                            }}
+                            // onClick={( ) => { props.handleToggle()}}
                             style={{ border: 'none', backgroundColor: 'none', color: 'grey', textTransform: 'lowercase', fontWeight: 'bolder' }}
 
                         >

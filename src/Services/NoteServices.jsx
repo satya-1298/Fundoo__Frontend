@@ -1,10 +1,22 @@
 import axios from "axios"
-export const CreateNote = (obj) => {
-    let response =  axios.post("https://localhost:44316/api/Note/CreateNotes", obj);
+export const CreateNote = async (obj) => {
+    console.log(localStorage.getItem("Token"))
+    let response = await axios.post("https://localhost:44316/api/Note/CreateNotes", obj,{
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("Token")}`
+        }
+    })
     return response;
 }
-// import axios from "axios"
-// export const signin = (obj) => {
-//     let response =  axios.post("https://localhost:44316/api/User/login", obj);
-//     return response;
-// }
+
+export const GetAllNote = () => {
+    let response =  axios.get("https://localhost:44316/api/Note/GetAllNote",
+    {
+        headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem("Token")}`
+        }
+    });
+    return response;
+}

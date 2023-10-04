@@ -32,6 +32,7 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import keeps from '../Assets/keeps.png'
+import { Scale } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -89,6 +90,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
+    marginRight:'-2',
     ...(open && {
       ...openedMixin(theme),
       '& .MuiDrawer-paper': openedMixin(theme),
@@ -129,8 +131,8 @@ export default function MiniDrawer() {
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    paddingLeft: '12px',
-    width: '100%',
+    paddingLeft: '0px',
+    width: '10%',
     height: '70%',
     marginTop: '10px',
     [theme.breakpoints.up('sm')]: {
@@ -154,15 +156,16 @@ export default function MiniDrawer() {
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'grey',
     '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
+       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
 
-      width: '100%',
+      // width: '100%',
       [theme.breakpoints.up('md')]: {
-        width: '90ch',
-        height: '25px',
+        width: '80ch',
+        height: '20px',
+        
 
       }
     },
@@ -190,18 +193,22 @@ export default function MiniDrawer() {
             onClick={handleDrawer}
             edge="start"
             sx={{
-              marginRight: 8
+              marginRight: -3,
+              marginLeft:0,
+             
             }}
           >
             <MenuIcon />
           </IconButton>
+         
+          <Typography variant="h6"  style={{flexGrow:1,display:'flex',height:'40px'}}  >
           <img src={keeps} alt='Keep' width={'40px'} height={'40px'} marginRight={4}></img>
-          <Typography variant="h6" noWrap component="div" color={'grey'} position={'relative'} top={'3vh'}  >
-           <b>Fundoo</b> 
+          <h3 style={{color:'grey',marginTop:'0px',marginLeft:'3px', fontSize:'22px'}}>Fundoo</h3> 
+
           </Typography>
-          <div style={{ marginLeft: 30 }}>
+          <div style={{ marginLeft: 20 }}>
             <Search>
-              <SearchIconWrapper>
+              <SearchIconWrapper color={'black'} >
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
@@ -217,7 +224,8 @@ export default function MiniDrawer() {
           </div>
           <RefreshIcon
             sx={{
-              marginLeft: 20, color: 'grey'
+              marginLeft: 20, color: 'grey',
+              
             }} />
           <ViewStreamOutlinedIcon
             sx={{
@@ -253,18 +261,21 @@ export default function MiniDrawer() {
             id="menu-appbar"
             anchorEl={anchorEl}
             anchorOrigin={{
-              vertical: 'top',
+              vertical: 'bottom',
               horizontal: 'right',
+             
             }}
             keepMounted
             transformOrigin={{
               vertical: 'top',
               horizontal: 'right',
+              marginTop:'50px',
+              height:'100%'
             }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
             width={'20px'}
-            height={'100px'}
+            height={'200px'}
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={signout}>Logout</MenuItem>
@@ -279,15 +290,15 @@ export default function MiniDrawer() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider />
+       
         <List>
           {['Notes', 'Remainders', 'Edit', 'Label', 'Trash'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block', paddingTop:'20px' }}>
+            <ListItem key={text} disablePadding sx={{ display: 'block', paddingTop:'0px' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   display:'flex',
-                  marginTop:'2px',
+                  marginTop:'10px',
                   flexDirection: 'row',
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,

@@ -32,6 +32,7 @@ export default function NoteOne({handleToggle}) {
 
                 }}>
                 <TextField
+                    type='text'
                     required
                     variant='standard'
                     placeholder=" Take a Note...."
@@ -43,7 +44,8 @@ export default function NoteOne({handleToggle}) {
                         outline: 'none',
                         width: '100%',
                         textDecoration: 'none',
-                        textAlign:'center'
+                        textAlign:'center',
+                        height:'20px',
                         },
                     }}
 
