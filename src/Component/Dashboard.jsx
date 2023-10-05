@@ -5,21 +5,24 @@ import NoteTwo from "./Notes/NoteTwo";
 import { Box, Grid } from "@mui/material";
 import NoteThree from "./Notes/NoteThree";
 import { GetAllNote } from "../Services/NoteServices";
+// import Header from "./Header";
 
 
 export default function Dashboard() {
 
-
     const [showNoteTwo, setShowNoteTwo] = useState(true);
+
+   
+    const [getnote, setGetnote] = useState([]);
+
+    const [noteoption,setNoteoption]=useState("Notes")
 
     const handleToggle = () => {
 
         setShowNoteTwo(!showNoteTwo)
     }
-    const [getnote, setGetnote] = useState([]);
 
     const AllNote = async () => {
-
         try {
             console.log('Hi');
             let response = await GetAllNote();
@@ -36,14 +39,59 @@ export default function Dashboard() {
         console.log("Data called")
         AllNote()
     }, []);
-    //console.log(getnote)
+
+
+        // GetAllNote()
+    //     .then((response)=>{
+    //         let filterNote=[]
+    //         let arr=response.data.data;
+    //         if(noteoption==='Notes'){
+    //             filterNote=response.data.data.filter((note)=>
+    //             {
+    //                 if(note.IsArchive===false && note.IsTrash===false){
+    //                     return note
+    //                 }
+    //             })
+
+    //         }
+    //         else if(noteoption==='Archive'){
+    //             filterNote=response.data.data.filter((note)=>{
+    //                 if(note.IsArchive===true&&note.IsTrash===false){
+    //                     return note
+    //                 }
+    //             })
+    //         }
+    //         else if(noteoption==='Trash'){
+    //             filterNote=response.data.data.filter((note)=>{
+    //                 if(note.IsArchive===false && note.IsTrash===false){
+    //                     return note
+    //                 }
+    //             })
+    //         }
+    //         console.log(response)
+    //         setGetnote(filterNote)
+    //     })
+    //     .catch((error)=>
+    //     {
+    //         console.log(error);
+    //     })
+    // }
+    // useEffect(()=>{
+    //     console.log("Data Called");
+    //     AllNote();
+    // },[noteoption])
+    // const autoRefresh=()=>{
+    //     AllNote()
+    // }
+
+   
 
     return (
         <div>
-            <MiniDrawer />
+            <MiniDrawer setNoteoption={setNoteoption} />
             <div>
             {
-                showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle} AllNote={AllNote} />
+                showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle}  AllNote={AllNote} />
             }
             </div>
            

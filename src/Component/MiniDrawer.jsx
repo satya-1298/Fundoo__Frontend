@@ -32,12 +32,15 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import keeps from '../Assets/keeps.png'
-import { Scale } from '@mui/icons-material';
+import '../Component/MiniStyle.css'
+import { Circle, Scale } from '@mui/icons-material';
+import { yellow } from '@mui/material/colors';
 
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
+ 
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -87,6 +90,7 @@ const AppBar = styled(MuiAppBar, {
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     width: drawerWidth,
+    borderright:0,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
@@ -104,7 +108,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 
 
-export default function MiniDrawer() {
+export default function MiniDrawer(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -180,7 +184,9 @@ export default function MiniDrawer() {
     }
   }
 
-
+  const selectOption=(option)=>{
+    props.setNoteOption(option);
+  }
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -193,8 +199,10 @@ export default function MiniDrawer() {
             onClick={handleDrawer}
             edge="start"
             sx={{
-              marginRight: -3,
-              marginLeft:0,
+             
+              
+              marginLeft:-4
+
              
             }}
           >
@@ -202,7 +210,7 @@ export default function MiniDrawer() {
           </IconButton>
          
           <Typography variant="h6"  style={{flexGrow:1,display:'flex',height:'40px'}}  >
-          <img src={keeps} alt='Keep' width={'40px'} height={'40px'} marginRight={4}></img>
+          <img src={keeps} alt='Keep' width={'40px'} height={'40px'} marginLeft={8}></img>
           <h3 style={{color:'grey',marginTop:'0px',marginLeft:'3px', fontSize:'22px'}}>Fundoo</h3> 
 
           </Typography>
@@ -270,30 +278,30 @@ export default function MiniDrawer() {
               vertical: 'top',
               horizontal: 'right',
               marginTop:'50px',
-              height:'100%'
+              height:'50px'
             }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
             width={'20px'}
             height={'200px'}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            
             <MenuItem onClick={signout}>Logout</MenuItem>
           </Menu>
           </div>
 
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open} >
-        <DrawerHeader>
+      <Drawer variant="permanent" open={open}  marginright= '60px'>
+        <DrawerHeader >
           <IconButton onClick={handleDrawer}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
        
         <List>
-          {['Notes', 'Remainders', 'Edit', 'Label', 'Trash'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block', paddingTop:'0px' }}>
+          {['Notes', 'Remainders', 'Edit', 'Archive', 'Trash'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block', paddingTop:'5px', height: '15%'}}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -302,25 +310,32 @@ export default function MiniDrawer() {
                   flexDirection: 'row',
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 165, 0, 0.15)', 
+                    
+                  },
+                  
                 }}
+               
               >
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
-                   
+                    height: '50%',
+                    
                   }}
                 >
                   {/* {index % 2 === 0 ? <LightbulbOutlinedIcon/>:<ArchiveIcon/> } */}
-                  {index === 0 ? <LightbulbOutlinedIcon /> : ""}
+                  {index === 0 ? <LightbulbOutlinedIcon onClick={()=>selectOption("Notes")}/> : ""}
                   {index === 1 ? <NotificationsOutlinedIcon /> : ""}
                   {index === 2 ? <EditIcon /> : ""}
-                  {index === 3 ? <ArchiveIcon /> : ""}
+                  {index === 3 ? <ArchiveIcon  onClick={()=>selectOption("Archive")}/> : ""}
                   {index === 4 ? <DeleteIcon /> : ""}
 
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0  ,marginTop:'47px', }} />
               </ListItemButton>
             </ListItem>
           ))}

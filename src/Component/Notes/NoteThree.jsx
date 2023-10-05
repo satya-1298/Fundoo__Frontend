@@ -1,20 +1,59 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { IconButton, Paper } from "@mui/material";
-import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
-import NotificationsPausedOutlinedIcon from '@mui/icons-material/NotificationsPausedOutlined';
-import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-import PaletteOutlinedIcon from '@mui/icons-material/PaletteOutlined';
+
+import { ArchiveOutlined, ColorLensOutlined, ImageOutlined, MoreVertOutlined, NotificationAddOutlined, PushPinOutlined, RedoOutlined, UndoOutlined } from '@mui/icons-material';
+
 import './DashBoard.css'
 
 import './NoteThree.css';
 
 export default function NoteThree(props) {
 console.log("getnote",props)
-    
+
+    const ArchiveNote=(id)=>
+    {
+        let archobj={
+            noteId:id,
+        }
+        console.log(archobj)
+        ArchiveNote(archobj).then
+        ((response)=>
+        {
+            props.autoRefresh()
+            console.log(response)
+        })
+        .catch((error)=>{
+            console.log(error.message);
+        })
+    }
+
+    const TrashNote=(id)=>{
+        let trasobj={
+            noteId : id,
+        }
+        console.log(trasobj)
+        TrashNote(trasobj).then((response)=>{
+            props.autoRefresh()
+            console.log(response)
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    }
+    const DeleteNote=(id)=>{
+        let delobj={
+            noteId : id,
+        }
+        console.log(delobj)
+        DeleteNote(delobj).then((response)=>{
+            props.autoRefresh()
+            console.log(response)
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+    }
     return (
         
         <Box className="Note3Box"
@@ -30,26 +69,36 @@ console.log("getnote",props)
                 },
             }}
         >
-            <div>
+            <div >
                 <Paper elevation={3}  className='paper'>  
                     <div  className='displaytitle'>
                         <div>
                             {props.data.title}
                         </div>
                         <div>
-                            <IconButton ><PushPinOutlinedIcon /></IconButton>
+                            <IconButton ><PushPinOutlined /></IconButton>
                         </div>
                     </div>
                     <div  className='displaynote'>
                         {props.data.description}
                     </div>
                     <div className='displayicons'>
-                        <div className='NotifiIcon'><IconButton ><NotificationsPausedOutlinedIcon /></IconButton></div>
-                        <div className='PersonIcon'><IconButton><PersonAddAltOutlinedIcon /></IconButton></div>
-                        <div className='PaletIcon'><IconButton><PaletteOutlinedIcon /></IconButton></div>
-                        <div className='ArchIcon'><IconButton  ><ArchiveOutlinedIcon /></IconButton></div>
-                        <div className='DeleteIcon'><IconButton  ><DeleteOutlinedIcon /></IconButton></div>
-                        <div className='MoreIcon'><IconButton ><MoreVertOutlinedIcon /></IconButton></div>
+                    <IconButton aria-label="Add Notification">
+                            <NotificationAddOutlined />
+                        </IconButton>
+                        <IconButton aria-label="Color" >
+                            <ColorLensOutlined />
+                        </IconButton>
+                        <IconButton aria-label="Image">
+                            <ImageOutlined />
+                        </IconButton>
+                        <IconButton aria-label="Archive" onClick={()=>{ArchiveNote(props.data.noteId)}}>
+                            <ArchiveOutlined />
+                        </IconButton>
+                        <IconButton aria-label="More Options">
+                            <MoreVertOutlined />
+                        </IconButton>
+                       
                     </div>
                 </Paper>
             </div>

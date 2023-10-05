@@ -46,10 +46,12 @@ export default function NoteTwo(props) {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    paddingTop: '10px',
-                    height:'120px',
+                    paddingTop: '9px',
+                    height:'70px',
                     width:'100%',
-                    marginTop: '50px',
+                    marginTop: '103px',
+                    marginBottom:'9px',
+                    paddingBottom:'98px'
 
                 }}
 
@@ -67,6 +69,8 @@ export default function NoteTwo(props) {
                         boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.3)', // Add a thicker box shadow here
                         border: 'none',// Remove the border from the Paper
                         height:'200px',
+                        paddingBottom:'vh',
+                        
                     }}
                 >
                     <div style={{
