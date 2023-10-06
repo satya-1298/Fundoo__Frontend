@@ -48,7 +48,7 @@ export default function Dashboard() {
       useEffect(() => {
             console.log("Data called")
             AllNote()
-        },[section]);
+        },[getnote]);
      
     
 

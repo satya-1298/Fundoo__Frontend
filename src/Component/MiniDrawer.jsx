@@ -312,7 +312,7 @@ export default function MiniDrawer(props) {
                   px: 2.5,
                   '&:hover': {
                     backgroundColor: 'rgba(255, 165, 0, 0.15)', 
-                    
+                    borderRadius:'0px 30px 30px 0px'
                   },
                   
                 }}
