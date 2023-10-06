@@ -185,7 +185,7 @@ export default function MiniDrawer(props) {
   }
 
   const selectOption=(option)=>{
-    props.setNoteOption(option);
+     props.setSection(option);
   }
 
   return (
@@ -328,11 +328,11 @@ export default function MiniDrawer(props) {
                   }}
                 >
                   {/* {index % 2 === 0 ? <LightbulbOutlinedIcon/>:<ArchiveIcon/> } */}
-                  {index === 0 ? <LightbulbOutlinedIcon onClick={()=>selectOption("Notes")}/> : ""}
+                  {index === 0 ? <LightbulbOutlinedIcon onClick={()=>selectOption("notes")}/> : ""}
                   {index === 1 ? <NotificationsOutlinedIcon /> : ""}
                   {index === 2 ? <EditIcon /> : ""}
-                  {index === 3 ? <ArchiveIcon  onClick={()=>selectOption("Archive")}/> : ""}
-                  {index === 4 ? <DeleteIcon /> : ""}
+                  {index === 3 ? <ArchiveIcon  onClick={()=>selectOption("archive")}/> : ""}
+                  {index === 4 ? <DeleteIcon  onClick={()=>selectOption("trash")} /> : ""}
 
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0  ,marginTop:'47px', }} />

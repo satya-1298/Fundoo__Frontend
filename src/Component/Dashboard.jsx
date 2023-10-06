@@ -15,90 +15,56 @@ export default function Dashboard() {
    
     const [getnote, setGetnote] = useState([]);
 
-    const [noteoption,setNoteoption]=useState("Notes")
+    const [section,setSection]=useState("notes")
 
     const handleToggle = () => {
 
         setShowNoteTwo(!showNoteTwo)
     }
 
-    const AllNote = async () => {
-        try {
-            console.log('Hi');
-            let response = await GetAllNote();
-            console.log('Hello');
-            console.log(response.data.data);
-
-            setGetnote(response.data.data); // Set only the data array, not the entire response object
-            console.log('Hiiiii');
-        } catch (error) {
-            console.error("Error fetching notes:", error);
+  
+    const AllNote = async() =>{
+        let response = await GetAllNote();
+        console.log(response.data.data)
+        let newArray = [];
+      
+        if(section === "notes"){
+          newArray = response.data.data.filter(filterData => filterData.isArchive === false && filterData.isTrash === false);
+          console.log('Note')
         }
-    };
-    useEffect(() => {
-        console.log("Data called")
-        AllNote()
-    }, []);
+      
+        else if(section === "archive"){
+          newArray = response.data.data.filter(filterData => filterData.isArchive === true && filterData.isTrash === false);
+        }
+      
+        else if(section === "trash"){
+          newArray = response.data.data.filter(filterData => filterData.isArchive === false && filterData.isTrash === true);
+        }
+        // SetGetAll(response.data.result) //'result' is data comming from Http response and we storing result data in "data"
+        console.log(newArray);
+        setGetnote(newArray);
+      };
 
-
-        // GetAllNote()
-    //     .then((response)=>{
-    //         let filterNote=[]
-    //         let arr=response.data.data;
-    //         if(noteoption==='Notes'){
-    //             filterNote=response.data.data.filter((note)=>
-    //             {
-    //                 if(note.IsArchive===false && note.IsTrash===false){
-    //                     return note
-    //                 }
-    //             })
-
-    //         }
-    //         else if(noteoption==='Archive'){
-    //             filterNote=response.data.data.filter((note)=>{
-    //                 if(note.IsArchive===true&&note.IsTrash===false){
-    //                     return note
-    //                 }
-    //             })
-    //         }
-    //         else if(noteoption==='Trash'){
-    //             filterNote=response.data.data.filter((note)=>{
-    //                 if(note.IsArchive===false && note.IsTrash===false){
-    //                     return note
-    //                 }
-    //             })
-    //         }
-    //         console.log(response)
-    //         setGetnote(filterNote)
-    //     })
-    //     .catch((error)=>
-    //     {
-    //         console.log(error);
-    //     })
-    // }
-    // useEffect(()=>{
-    //     console.log("Data Called");
-    //     AllNote();
-    // },[noteoption])
-    // const autoRefresh=()=>{
-    //     AllNote()
-    // }
-
-   
+      useEffect(() => {
+            console.log("Data called")
+            AllNote()
+        },[section]);
+     
+    
 
     return (
         <div>
-            <MiniDrawer setNoteoption={setNoteoption} />
+            <MiniDrawer setSection={setSection} />
             <div>
             {
-                showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle}  AllNote={AllNote} />
+                showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle} AllNote={AllNote} />
             }
             </div>
            
             <div className="notethree">
                 {
                     getnote.map((data) =>
-                        (<NoteThree key={data.id} data={data} AllNote={AllNote} />))
+                        (<NoteThree key={data.id} data={data} AllNote={AllNote} TrashSection={data.isTrash}/>))
                 }
             </div>
             {/* <NoteThree/> */}
