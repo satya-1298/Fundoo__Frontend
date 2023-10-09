@@ -7,10 +7,11 @@ export const CreateNote = async (obj) => {
             'Authorization': `Bearer ${localStorage.getItem("Token")}`
         }
     })
+       await displayNote();
     return response;
 }
 
-export const GetAllNote = () => {
+export const displayNote = async () => {
     let response =  axios.get("https://localhost:44316/api/Note/GetAllNote",
     {
         headers:{
@@ -20,7 +21,7 @@ export const GetAllNote = () => {
     });
     return response;
 }
-export const ArchiveNote = async (archiveNoteObj) => {
+export const archiveNote = async (archiveNoteObj) => {
     console.log('id', archiveNoteObj.noteID)
     let response = await axios.put(`https://localhost:44316/api/Note/IsArchive/${archiveNoteObj.noteID}`, archiveNoteObj.noteID, {
         headers: {
@@ -31,9 +32,9 @@ export const ArchiveNote = async (archiveNoteObj) => {
     return response;
 }
 
-export const DeleteNote = async (DelNoteObj) => {
-    console.log('id', DelNoteObj.noteID)
-    let response = await axios.delete(`https://localhost:44316/api/Note/DeleteNote/${DelNoteObj.noteID}`, {
+
+export const trashNote = async (TrashNoteObj) => {
+    let response = await axios.put(`https://localhost:44316/api/Note/IsTrash/${TrashNoteObj.noteID}`, TrashNoteObj, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem("Token")}`,
@@ -41,12 +42,11 @@ export const DeleteNote = async (DelNoteObj) => {
     })
     return response;
 }
-export const TrashNote = async (TrashNoteObj) => {
-    console.log('id', TrashNoteObj.noteID)
-    let response = await axios.put(`https://localhost:44316/api/Note/IsTrash/${TrashNoteObj.noteID}`, TrashNoteObj, {
+export const permenentDeleteNote = async (DelNoteObj) => {
+    let response = await axios.delete(`https://localhost:44316/api/Note/DeleteNote/${DelNoteObj.noteID}`, {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem("Token")}`,
+            'Authorization': `Bearer ${localStorage.getItem("Token")}`
         }
     })
     return response;

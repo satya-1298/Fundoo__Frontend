@@ -5,9 +5,9 @@ import { ArchiveOutlined, ColorLensOutlined, ImageOutlined, MoreVertOutlined, No
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import './DashBoard.css'
 import './NoteThree.css';
-import { ArchiveNote } from '../../Services/NoteServices';
-import {TrashNote} from  '../../Services/NoteServices';
-import {DeleteNote} from  '../../Services/NoteServices';
+import { archiveNote } from '../../Services/NoteServices';
+import {trashNote} from  '../../Services/NoteServices';
+import {permenentDeleteNote} from  '../../Services/NoteServices';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
@@ -16,9 +16,9 @@ console.log("getnote",props)
 
         const setArchive = (id) => {
             let obj = { noteID: id };
-            ArchiveNote(obj)
+            archiveNote(obj)
             .then((response) => {
-                props.AllNote()
+                props.allNote()
                 console.log(response);
             })
             .catch((error) => {
@@ -28,7 +28,7 @@ console.log("getnote",props)
 
         const setTrash = (id) => {
             let obj = { noteID: id };
-            TrashNote(obj)
+            trashNote(obj)
             .then((response) => {
                 console.log(response);
             })
@@ -39,7 +39,7 @@ console.log("getnote",props)
         const setDelete=(id)=>{
             let obj ={noteID:id};
             console.log('hehe')
-            DeleteNote(obj)
+            permenentDeleteNote(obj)
             .then((response)=>{
                 console.log(response);
             })

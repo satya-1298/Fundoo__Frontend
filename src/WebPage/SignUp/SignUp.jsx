@@ -24,41 +24,41 @@ export default function SignUp() {
     });
 
     const navigate = useNavigate()
-
-    const FirstName = (e) => {
-        setData(prevState => (
-            {
-                ...prevState,
-                firstName: e.target.value
-            }
-        ))
+    const changeHandle = {
+        changeFirstName: (e) =>
+            setData(prevState => (
+                {
+                    ...prevState,
+                    firstName: e.target.value
+                }
+            )),
         //console.log(event)
-    }
-    const LastName = (e) => {
-        setData(prevState => (
-            {
-                ...prevState,
-                lastName: e.target.value
-            }
-        ))
-    }
-    const Email = (e) => {
-        setData(prevState => (
-            {
-                ...prevState,
-                email: e.target.value
-            }
-        ))
-    }
-    const Password = (e) => {
-        setData(prevState => (
-            {
-                ...prevState,
-                password: e.target.value
-            }
-        ))
-    }
 
+        changeLastName: (e) =>
+            setData(prevState => (
+                {
+                    ...prevState,
+                    lastName: e.target.value
+                }
+            )),
+
+        changeEmail: (e) =>
+            setData(prevState => (
+                {
+                    ...prevState,
+                    email: e.target.value
+                }
+            )),
+
+        changePassword: (e) =>
+            setData(prevState => (
+                {
+                    ...prevState,
+                    password: e.target.value
+                }
+            ))
+
+    }
     console.log(data);
     const verifyValidation = () => {
         let validFirstName = RegFirstName.test(data.firstName)
@@ -133,20 +133,20 @@ export default function SignUp() {
                             <p className="heading-ss" >Create your Fundoo Account </p>
                         </div>
                         <div className="name-ss">
-                            <TextField id="FirstName" label="FirstName" onChange={FirstName} size="small" error={regobj.firstNameBoarder} helperText={regobj.firstNameHelper} variant="outlined" className="input-ss" />
+                            <TextField id="FirstName" label="FirstName" onChange={changeHandle.changeFirstName} size="small" error={regobj.firstNameBoarder} helperText={regobj.firstNameHelper} variant="outlined" className="input-ss" />
 
-                            <TextField id="LastName" label="LastName" onChange={LastName} error={regobj.lastNameBoarder} helperText={regobj.lastNameHelper} variant="outlined" size="small" className="input-ss" />
+                            <TextField id="LastName" label="LastName" onChange={changeHandle.changeLastName} error={regobj.lastNameBoarder} helperText={regobj.lastNameHelper} variant="outlined" size="small" className="input-ss" />
                         </div>
 
                         <div className="Username-SS">
-                            <TextField id="Email" label="UserName" onChange={Email} error={regobj.emailBoarder} helperText={regobj.emailHelper} variant="outlined" size="small" className="input-sss" />
+                            <TextField id="Email" label="UserName" onChange={changeHandle.changeEmail} error={regobj.emailBoarder} helperText={regobj.emailHelper} variant="outlined" size="small" className="input-sss" />
 
                         </div>
 
                         <label className="label-ss">you can use letters,numbers & periods</label>
                         <p className="para-ss">Use my current email instead</p>
                         <div className="pass-stylee" >
-                            <TextField type="password" id="Password" label="Password" onChange={Password} variant="outlined" error={regobj.passwordBoarder} helperText={regobj.password_Helper} size="small" className="input-ss" />
+                            <TextField type="password" id="Password" label="Password" onChange={changeHandle.changePassword} variant="outlined" error={regobj.passwordBoarder} helperText={regobj.password_Helper} size="small" className="input-ss" />
                             <TextField type="password" id="PasswordConfirm" label="Confirm" variant="outlined" size="small" className="input-ss" />
 
                         </div>
@@ -157,12 +157,10 @@ export default function SignUp() {
 
                         </div>
                         <div className="submitt">
-                            <Link to="/login">
+                            <Link to="/">
                                 <a href=''>sign in insted</a>
                             </Link>
-                            {/* <a href="/login">
-                             <Button onClick={verifyValidation} variant="contained" className="button-ss" >Next</Button>
-                             </a> */}
+                           
                             <Button onClick={verifyValidation} variant="contained" className="button-ss" >Next</Button>
                         </div>
                     </div>

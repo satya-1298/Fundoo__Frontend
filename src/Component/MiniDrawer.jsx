@@ -185,7 +185,7 @@ export default function MiniDrawer(props) {
   }
 
   const selectOption=(option)=>{
-     props.setSection(option);
+     props.setCollection(option);
   }
 
   return (

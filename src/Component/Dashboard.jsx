@@ -4,7 +4,7 @@ import NoteOne from "./Notes/NoteOne";
 import NoteTwo from "./Notes/NoteTwo";
 import { Box, Grid } from "@mui/material";
 import NoteThree from "./Notes/NoteThree";
-import { GetAllNote } from "../Services/NoteServices";
+import { displayNote } from "../Services/NoteServices";
 // import Header from "./Header";
 
 
@@ -23,41 +23,37 @@ export default function Dashboard() {
     }
 
 
-    const AllNote = async () => {
+    const allNote = async () => {
 
-        try {
-            let response = await GetAllNote();
-            console.log(response.data.data);
 
-            if (!response.data.data || response.data.data.length === 0) {
-                // Handle the case when there are no notes to display
-                console.log("No notes found.");
-                setGetnote([]); // Clear the existing notes
-            } else {
-                let newArray = [];
+        let response = await displayNote();
+        console.log(response.data.data);
 
-                if (collection === "notes") {
-                    newArray = response.data.data.filter(filterData => filterData.isArchive === false && filterData.isTrash === false);
-                    console.log('Note');
-                } else if (collection === "archive") {
-                    newArray = response.data.data.filter(filterData => filterData.isArchive === true && filterData.isTrash === false);
-                } else if (collection === "trash") {
-                    newArray = response.data.data.filter(filterData => filterData.isArchive === false && filterData.isTrash === true);
-                }
-                console.log(newArray);
-                setGetnote(newArray);
-            }
-        } catch (error) {
-            console.error("Error in GetAllNote:", error);
-            throw error; 
 
-        };
+        let newArray = [];
 
-    };
+        if (collection === "notes") {
+            newArray = response.data.data.filter(filterData => filterData.isArchive === false && filterData.isTrash === false);
+            console.log('Note');
+            setGetnote(newArray);
+        } else if (collection === "archive") {
+            newArray = response.data.data.filter(filterData => filterData.isArchive === true && filterData.isTrash === false);
+            setGetnote(newArray);
+        } else if (collection === "trash") {
+            newArray = response.data.data.filter(filterData => filterData.isArchive === false && filterData.isTrash === true);
+            setGetnote(newArray);
+        }
+        console.log(newArray);
+        
+    }
+
+
+
+
 
     useEffect(() => {
         console.log("Data called")
-        AllNote()
+        allNote()
     }, [getnote]);
 
 
@@ -67,17 +63,44 @@ export default function Dashboard() {
             <MiniDrawer setCollection={setCollection} />
             <div>
                 {
-                    showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle} AllNote={AllNote} />
+                    showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle} allNote={allNote} />
                 }
             </div>
 
             <div className="notethree">
                 {
-                    getnote.map((data) =>
-                        (<NoteThree key={data.id} data={data} AllNote={AllNote} TrashSection={data.isTrash} />))
-                }
+                    getnote.length === 0 ? (
+                        <p style={{border:"20px", paddingTop:'45px'}}>No notes to display.</p>
+                    ) : (
+                        getnote.map((data) => (
+                            <NoteThree key={data.id} data={data} TrashSection={data.isTrash} allNote={allNote} />
+                        ))
+                    )}
             </div>
             {/* <NoteThree/> */}
+            {/* {
+                <div>
+                    {
+                        getnote.length === 0 ? (
+                            <div>
+                                {
+                                    showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle} allNote={allNote} />
+                                }
+                            </div>
+                        ) :
+
+                            (<div>
+                                {showNoteTwo ? <NoteOne handleToggle={handleToggle} /> : <NoteTwo handleToggle={handleToggle} allNote={allNote} />}
+                                <div className="notethree">
+                                    {getnote.map((data) => (
+                                        <NoteThree key={data.id} data={data} TrashSection={data.isTrash} allNote={allNote} />
+                                    ))}
+                                </div>
+                            </div>
+                            )
+                    }
+                </div>
+            } */}
         </div>
     )
 }
