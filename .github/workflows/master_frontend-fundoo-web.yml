@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Frontend-fundoo-web'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_45F522EFEB164B8F960361203B4F9DCA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BC2159D7EEAB436782ACC332CCBF51DB }}
           package: .
