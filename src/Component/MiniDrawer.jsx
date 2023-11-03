@@ -12,7 +12,6 @@ import AppsIcon from '@mui/icons-material/Apps';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -33,8 +32,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import keeps from '../Assets/keeps.png'
 import '../Component/MiniStyle.css'
-import { Circle, Scale } from '@mui/icons-material';
-import { yellow } from '@mui/material/colors';
 
 const drawerWidth = 240;
 

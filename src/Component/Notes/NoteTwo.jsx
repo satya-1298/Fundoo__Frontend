@@ -43,21 +43,16 @@ export default function NoteTwo(props) {
 
         <Box
             sx={{
-                 display: 'flex',
-                 alignItems: 'center',
-                 justifyContent: 'center',
-                // paddingTop: '9px',
-                // height: '70px',
-                // width: '100%',
-                // marginTop: '170px',
-                // marginBottom: '9px',
-                // paddingBottom: '98px'
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+
                 marginTop: '90px',
                 '& > :not(style)': {
-                       m: 1,
+                    m: 1,
                     width: '75ch',
                     height: 'auto',
-                    },
+                },
             }}
 
         >
@@ -66,31 +61,21 @@ export default function NoteTwo(props) {
                 className='Paper.s'
                 sx={{
                     width: '70ch',
-                //     display: 'flex',
-                //     flexDirection: 'column',
-                //     alignItems: 'left',
-                    padding: '1ch',
-                //     borderRadius: '10px',
-                //     boxShadow: '4px 4px 8px rgba(0, 0, 0, 0.3)', // Add a thicker box shadow here
-                //     border: 'none',// Remove the border from the Paper
-                     height: 'auto',
-                //     paddingBottom: 'vh',
 
-                 }}
+                    padding: '1ch',
+
+                    height: 'auto',
+
+
+                }}
             >
-                {/* <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginBottom: '10px', // Add some margin for spacing
-                    height:'auto' */}
-            
+
+
                 <div className='title'>
                     <TextField
                         required
                         variant='standard'
                         placeholder="Title..."
-                        // value={input.title}
                         onChange={getTitle}
                         InputProps=
                         {{
@@ -100,7 +85,7 @@ export default function NoteTwo(props) {
                                 outline: 'none',
                                 width: '100%',
                                 textDecoration: 'none',
-                                height:'auto'
+                                height: 'auto'
                             },
                         }}
 
@@ -109,27 +94,27 @@ export default function NoteTwo(props) {
                     </IconButton>
                 </div>
                 <div className='description'>
-                <TextField
-                    multiline
-                    required
-                    variant='standard'
-                    placeholder="Take a note..."
+                    <TextField
+                        multiline
+                        required
+                        variant='standard'
+                        placeholder="Take a note..."
 
-                    onChange={getDescription}
-                    InputProps={{
-                        disableUnderline: 'true',
-                        style: {
-                            display:'flex',
-                            border: 'none',
-                            outline: 'none',
-                            width: '100%',
-                            height: 'auto'
-                        },
-                    }}
-                />
+                        onChange={getDescription}
+                        InputProps={{
+                            disableUnderline: 'true',
+                            style: {
+                                display: 'flex',
+                                border: 'none',
+                                outline: 'none',
+                                width: '100%',
+                                height: 'auto'
+                            },
+                        }}
+                    />
                 </div>
                 <div
-                className='buttons'
+                    className='buttons'
                     style={{
                         display: 'flex',
                         justifyContent: 'space-between',

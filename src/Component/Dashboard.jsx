@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import MiniDrawer from "./MiniDrawer";
 import NoteOne from "./Notes/NoteOne";
 import NoteTwo from "./Notes/NoteTwo";
-import { Box, Grid } from "@mui/material";
 import NoteThree from "./Notes/NoteThree";
 import { displayNote } from "../Services/NoteServices";
-// import Header from "./Header";
 
 
 export default function Dashboard() {

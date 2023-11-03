@@ -57,13 +57,10 @@ console.log("getnote",props)
         <Box className="Note3Box"
             sx={{
                  display: 'flex',
-                 //justifyContent:'center',
-                //  flexDirection: 'row',
-                //flexWrap:'wrap',
-                //padding: '35px',
+                
                 '& > :not(style)': {
                     m: 1,
-                    //width:'50%',
+                    
                 },
             }}
         >

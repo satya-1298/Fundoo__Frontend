@@ -12,41 +12,6 @@
 div{
     height: auto;
 }  
-.Upper-Div{
-    color: gray;
-    height: 33.33%;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    font-size: large;
-}
-.Middle-Div{
-    color: gray;
-    min-height: 33.33%;
-    height: auto;
-    text-align: left;
-    display: flex;
-    align-items: center;
-
-}
-.Lower-Div{
-    height: 33.33%;
-    display: flex;
-    align-items: center;
-    text-align: right;
-}
-.Lower-Div-Icon{
-    width: 350px;
-    display: flex;
-    justify-content: space-between;
-}
-input{
-    height: 100%;
-    border: 0px ;
-    outline: none;
-}
-
-
 
 
 
