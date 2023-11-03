@@ -21,19 +21,16 @@
 .Note3Box.MuiBox-root.css-1fl6d1h {
     display: flex;
     justify-content: center;
-    padding: 3.5%;
-    margin-top: -9px;
-   margin-bottom: 120px;
    
 }
 
 .paper{
     height: auto;
     width:40vw;
-    margin-right: 10px;
+    /* margin-right: 11px;
     position:unset;
     border-radius: '10px';
-    
+     */
     
 }
 .trashicons

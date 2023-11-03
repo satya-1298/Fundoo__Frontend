@@ -103,7 +103,7 @@ export default function SignUp() {
         }
 
 
-        if (validFirstName == true && validateLastName == true && validEmail == true && validatePassword == true) {
+        if (validFirstName === true && validateLastName === true && validEmail === true && validatePassword === true) {
             signup(data).then((response) => {
                 console.log(response)
                 navigate("/")

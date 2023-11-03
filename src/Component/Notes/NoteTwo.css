@@ -1,10 +1,17 @@
-.PaperTwo-Container{
-   width: 600px;
-   border-top: 2px;
-   display: flex;
-   justify-content: center;
-   
+.title {
+    display: flex;
+    width: 623px;
+    justify-content: space-between;
+    height: auto;
 }
+.description{
+    display: flex;
+    position: relative;
+    height: auto;
+}
+div{
+    height: auto;
+}  
 .Upper-Div{
     color: gray;
     height: 33.33%;

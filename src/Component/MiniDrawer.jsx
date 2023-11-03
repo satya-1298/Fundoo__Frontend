@@ -304,7 +304,7 @@ export default function MiniDrawer(props) {
             <ListItem key={text} disablePadding sx={{ display: 'block', paddingTop:'5px', height: '15%'}}>
               <ListItemButton
                 sx={{
-                  minHeight: 48,
+                  //minHeight: 48,
                   display:'flex',
                   marginTop:'10px',
                   flexDirection: 'row',
@@ -312,7 +312,8 @@ export default function MiniDrawer(props) {
                   px: 2.5,
                   '&:hover': {
                     backgroundColor: 'rgba(255, 165, 0, 0.15)', 
-                    borderRadius:'0px 30px 30px 0px'
+                    borderRadius:'0px 30px 30px 0px',
+                    
                   },
                   
                 }}

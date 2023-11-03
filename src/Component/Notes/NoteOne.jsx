@@ -12,7 +12,7 @@ export default function NoteOne({handleToggle}) {
          display: 'flex',
          alignItems: 'center',
          justifyContent: 'center',
-            marginTop: '10px',
+            marginTop: '90px',
                  '& > :not(style)': {
                         m: 1,
                      width: '75ch',
