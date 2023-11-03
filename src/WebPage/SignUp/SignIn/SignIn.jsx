@@ -87,11 +87,9 @@ export default function SignIn() {
                         </div>
                         <div className="detail.cs">
                             <TextField id="email" label="Email or Phone" onChange={handleChange.handleUserName} error={regdata.emailBoarder} helperText={regdata.emailhelper} size="small" variant="outlined" className="input-s" />
-                            {/* <input type="email/phonenumber" id="email" placeholder="Email or phone"  className="input-s"/> */}
                         </div>
                         <div className="detail.cs">
                             <TextField type="password" id="Password" label="Password" onChange={handleChange.handlePassword} error={regdata.passwordBoarder} helperText={regdata.passwordhelper} variant="outlined" size="small" className="input-s" />
-                            {/* <input type="password" id="password" placeholder="Password" className="input-s"/> */}
                         </div>
                         <div>
                             <a href=" " className="para-s">forgot Password?</a>
@@ -102,9 +100,6 @@ export default function SignIn() {
                             </Link>
 
                             <Button onClick={Validation} variant="contained">Login</Button>
-                            {/* <a href="/dashboard">
-                            </a> */}
-                            {/* <Button onClick={Validation} variant="contained">Login</Button> */}
                         </div>
                     </form>
                 </div>

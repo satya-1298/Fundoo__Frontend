@@ -5,17 +5,15 @@ import './SignUp.css';
 import Logo from "../../Assets/Logo.jpg"
 import { Link, useNavigate } from "react-router-dom"
 import { signup } from "../../Services/UserServices";
-// import SignIn from "./SignIn/SignIn";   
 import { TextField, Button } from '@mui/material';
 const RegFirstName = /^([A-Z]{1}[a-z,A-Z]{2,})$/;
 const RegLastName = /^([A-Z]{1}[a-z,A-Z]{2,})$/;
-const RegEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
-const RegPassword = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
+const RegEmail = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+const RegPassword = /^(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=()])([a-zA-Z\d@#$%^&+=()]*).{8,}$/;
 
 
 
 export default function SignUp() {
-    // useState-hook to manage the component's state, 
     const [data, setData] = useState({ firstName: '', lastName: '', email: '', password: '' });
     const [regobj, setRegobj] = useState({
         firstNameBoarder: false, firstNameHelper: '',
