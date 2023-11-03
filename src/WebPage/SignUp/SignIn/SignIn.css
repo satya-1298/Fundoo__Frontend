@@ -42,7 +42,7 @@
 .oo{color:red;}
  
 .input-s{
-    height: 40px;
+    height: 70px;
     border-radius: 4px;
     width: 300px;
 }
@@ -69,6 +69,7 @@ div{
 }
 .submit-s
 {
+    margin-top: 40px;
     display: flex;
     justify-content: space-between;
 }
@@ -80,6 +81,7 @@ button{
 }
 .link-s{
     color: rgb(55, 55, 223) ;
+    
 }
 @media  screen and (max-width:650px){
     .form-container

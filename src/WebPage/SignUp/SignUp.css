@@ -49,29 +49,38 @@
     height: 30px;
     border-radius: 4px;
     width: 200px;
+    display: flex;
     
 }
 .name-ss
 {
+    height: 50px;
     display: flex;
     justify-content: space-between;
+}
+.Username-SS
+{
+    margin-top: 35px;
+    margin-bottom: 30px;
+   
 }
 .input-sss{
     height: 30px;
     width: 99%;
     border-radius: 4px;
 }
-div{
+/* div{
     height: 50px;
     /* display: flex;
     justify-content: space-between; */
-}
+ 
 .para-ss{
     text-align: start;
 }
 .pass-stylee{
    display: flex;
    justify-content: space-between;
+   margin-bottom: 30px;
 }
 .submitt{
     display: flex;

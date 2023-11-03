@@ -1,12 +1,8 @@
-.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-    max-height: 500px;
-   width: 100px;
-   height: 300%;
-   padding-top: 20px;
-   padding-bottom: 30px;
+ .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+   height:auto;
+  
    
-   
-}
+} 
 span.MuiTypography-root.MuiTypography-body1.MuiListItemText-primary.css-10hburv-MuiTypography-root{
     margin-top:-31px
 }

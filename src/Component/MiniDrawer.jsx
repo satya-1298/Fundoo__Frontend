@@ -137,8 +137,8 @@ export default function MiniDrawer(props) {
     marginLeft: 0,
     paddingLeft: '0px',
     width: '10%',
-    height: '70%',
-    marginTop: '10px',
+    height: '50px',
+    //marginTop: 'px',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(2),
       width: 'auto',
@@ -224,7 +224,7 @@ export default function MiniDrawer(props) {
             inputProps={{ 'aria-label': 'search' }}
             sx={{
               justifyItems: 'center',
-              paddingBottom:'20px',
+              paddingTop:'5px',
               alignContent: 'center',
               color: 'black',
             }} />
@@ -271,19 +271,16 @@ export default function MiniDrawer(props) {
             anchorOrigin={{
               vertical: 'bottom',
               horizontal: 'right',
+
              
             }}
             keepMounted
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-              marginTop:'50px',
-              height:'50px'
+
             }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
-            width={'20px'}
-            height={'200px'}
+
           >
             
             <MenuItem onClick={signout}>Logout</MenuItem>
