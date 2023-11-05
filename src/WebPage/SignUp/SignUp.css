@@ -85,6 +85,7 @@
 .submitt{
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
 }
 .button-ss{
     height: 40px;
